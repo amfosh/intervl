@@ -1,3 +1,88 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: 'Work Sans', sans-serif;
+}
+
+#intervl-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  background-color: white;
+  padding: 20px;
+  margin: 20px auto;
+  border-left: 4px solid slategray;
+}
+
 .hidden {
-    display: none;
+  display: none;
+}
+
+#intervl-clock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#intervl-clock-circle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    border: 5px solid lightgrey;
+}
+
+#intervl-clock-timer {
+    font-size: 3rem;
+}
+
+#intervl-clock-circle * {
+  color: black;
+}
+
+#intervl-clock-title {
+  margin-top: 20px;
+  width: 200px
+}
+
+#intervl-clock-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100px;
+}
+
+#intervl-clock-actions button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+#intervl-timer {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.intervl-input {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.intervl-input input {
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: 5px;
 }
