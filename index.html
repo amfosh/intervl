@@ -1,17 +1,48 @@
 <div id="intervl-container">
     <div id="intervl-clock">
         <div id="intervl-timer"></div>
+        <div>
+            <input
+              type="text"
+              id="intervl-clock-task"
+              placeholder="Name your workout"
+            />
+          </div>
         <div id="intervl-clock-actions"></div>
             <button id="intervl-start">Start</button>
             <button id="intervl-pause">Pause</button>
             <button id="intervl-stop">Stop</button>
         </div>
-    </div>
+        <div id="intervl-clock-title">
+            <span>
+                Changes made here will reflect at the start of your next workout/break session
+            </span>
+        </div>
+        <div id="intervl-clock-actions">
+            <div class="intervl-input">
+                <label>Workout Duratiom</label>
+                <input 
+                    name="input-workout-duration" 
+                    id="input-workout-duration" 
+                    type="number" 
+                />
+            </div>
+            <div class="intervl-input">
+                <label>Break Duration</label>
+                <input 
+                    name="input-break-duration" 
+                    id="input-break-duration" 
+                    type="number" 
+            />
+            </div>
+        </div>
 
-    <div id="intervl-info">
-        <h3>Your Sessions </h3>
-        <ul id="intervl-sessions">
-        </ul>
-      </div>
+
+        <div id="intervl-info">
+            <h3>Your Intervls</h3>
+            <ul id="intervl-sessions">
+            </ul>
+        </div>
     </div>
+</div>
 </div>

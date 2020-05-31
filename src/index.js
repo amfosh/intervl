@@ -1,5 +1,4 @@
 const intervlTimer = document.querySelector('#intervl-timer');
-
 const startButton = document.querySelector('#intervl-start')
 const pauseButton = document.querySelector('#intervl-pause')
 const stopButton = document.querySelector('#intervl-stop')
@@ -17,10 +16,19 @@ stopButton.addEventListener('click', () => {
 })
 
 let isClockRunning = false;
-let workSessionDuration = 1500;
+let workoutSessionDuration = 1500;
 let currentTimeLeftInSession = 1500;
 let breakSessionDuration = 300;
 let type = 'Work';
+let timeSpentInCurrentSession = 0;
+let currentTaskLabel = document.querySelector('#intervl-clock-task');
+let updatedWorkoutSessionDuration;
+let updatedBreakSessionDuration;
+let workoutDurationInput = document.querySelector('#input-workout-duration');
+let breakDurationInput = document.querySelector('#input-break-duration');
+
+workDurationInput.value = '25';
+breakDurationInput.value = '5';
 
 const toggleClock = (reset) => {
     if (reset) {
@@ -54,27 +62,57 @@ const displayCurrentTimeLeftInSession = () => {
 }
 
 const stopClock = () => {
+    displaySessionLog(type);
     clearInterval(clockTimer);
     isClockRunning = false;
-    currentTimeLeftInSession = workSessionDuration;
+    currentTimeLeftInSession = workoutSessionDuration;
     displayCurrentTimeLeftInSession();
+    type = 'Work';
 }
 
 const stepDown = () => {
     if (currentTimeLeftInSession > 0) {
-      // decrease time left / increase time spent
       currentTimeLeftInSession--;
-      } else if (currentTimeLeftInSession === 0) {
-        // Timer is over -> if work switch to break, viceversa
+      timeSpentInCurrentSession++;
+    } else if (currentTimeLeftInSession === 0) {
+        timeSpentInCurrentSession = 0;
         if (type === 'Work') {
           currentTimeLeftInSession = breakSessionDuration;
           displaySessionLog('Work');
           type = 'Break';
+          currentTaskLabel.value = 'Break';
+          currentTaskLabel.disabled = true;
         } else {
-          currentTimeLeftInSession = workSessionDuration;
+          currentTimeLeftInSession = workoutSessionDuration;
           type = 'Work';
+          if (currentTaskLabel.value === 'Break') {
+            currentTaskLabel.value = workoutSessionLabel;
+          }
+          currentTaskLabel.disabled = false;
           displaySessionLog('Break');
         }
-      }
-      displayCurrentTimeLeftInSession();
     }
+    displayCurrentTimeLeftInSession();
+}
+
+const displaySessionLog = (type) => {
+    const sessionsList = document.querySelector('#intervl-sessions');
+    const li = document.createElement('li');
+    if (type == 'Work') {
+        sessionLabel = currentTaskLabel.value ?
+        currentTaskLabel.value 
+        : 'Work'
+        workoutSessionLabel = sessionLabel 
+    } else {
+        sessionLabel = 'Break'
+    }
+    let elapsedTime = parseInt(timeSpentInCurrentSession / 60)
+    elapsedTime = elapsedTime > 0 ? elapsedTime : '< 1';
+  
+    const text = document.createTextNode(
+      `${sessionLabel} : ${elapsedTime} min`
+    )
+    li.appendChild(text);
+    sessionsList.appendChild(li);
+  }
+  
