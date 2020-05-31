@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/main.css">
+    <script src="./node_modules/progressbar.js"></script>
+</head>
 <div id="intervl-container">
     <div id="intervl-clock">
         <div id="intervl-timer"></div>
@@ -9,9 +15,13 @@
             />
           </div>
         <div id="intervl-clock-actions"></div>
-            <button id="intervl-start">Start</button>
-            <button id="intervl-pause">Pause</button>
-            <button id="intervl-stop">Stop</button>
+            <button id="intervl-start">  
+                <i class="fas fa-play" id="play-icon"></i>
+                <i class="fas fa-pause hidden" id="pause-icon"></i>
+            </button>
+            <button id="intervl-stop" class="hidden">
+                <i class="fas fa-stop"></i>
+            </button>
         </div>
         <div id="intervl-clock-title">
             <span>
@@ -46,3 +56,4 @@
     </div>
 </div>
 </div>
+<script src="./src/index.js"></script>
